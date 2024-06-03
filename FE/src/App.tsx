@@ -2,13 +2,14 @@ import { Routes, Route, Outlet, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Error from './pages/Error/Error'
 import VISIT from './pages/Visit/Visit'
+import About from './pages/About/About'
 
 export default function App() {
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<VISIT />} />
-                <Route path="about" element={<div>about</div>} />
+                <Route path="about" element={<About />} />
                 <Route path="tech" element={<div>tech</div>} />
                 <Route path="portpolio" element={<div>portpolio</div>} />
                 <Route path="contact" element={<div>contact</div>} />

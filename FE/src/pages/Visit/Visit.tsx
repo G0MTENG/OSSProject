@@ -97,7 +97,7 @@ const FlexWrapper = styled.div`
 
 const Wrapper = styled.div`
     width: 60%;
-    height: 90vh;
+    height: calc(90vh - 1px);
     display: flex;
     flex-direction: column;
     align-items: center;

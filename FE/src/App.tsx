@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Error from './pages/Error/Error'
 import VISIT from './pages/Visit/Visit'
 import About from './pages/About/About'
+import Tech from './pages/Tech/Tech'
 
 export default function App() {
     return (
@@ -10,9 +11,7 @@ export default function App() {
             <Route path="/" element={<Layout />}>
                 <Route index element={<VISIT />} />
                 <Route path="about" element={<About />} />
-                <Route path="tech" element={<div>tech</div>} />
-                <Route path="portpolio" element={<div>portpolio</div>} />
-                <Route path="contact" element={<div>contact</div>} />
+                <Route path="tech" element={<Tech />} />
                 <Route path="visitors" element={<div>visitors</div>} />
                 <Route path="*" element={<Error />} />
             </Route>
@@ -25,10 +24,9 @@ function Layout() {
         <div>
             <Hamburger>
                 <Logo>TY</Logo>
+                <StyledLink to="/">REGISTER</StyledLink>
                 <StyledLink to="/about">ABOUT</StyledLink>
                 <StyledLink to="/tech">TECH</StyledLink>
-                <StyledLink to="/portpolio">PORTFOLIO</StyledLink>
-                <StyledLink to="/contact">CONTACT</StyledLink>
                 <StyledLink to="/visitors">VISITORS</StyledLink>
             </Hamburger>
             <Outlet />

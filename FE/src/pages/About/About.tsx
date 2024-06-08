@@ -3,7 +3,7 @@ import Memoji from '../../assets/img/Memoji.svg'
 
 export default function About() {
     const string =
-        '안녕하세요! 저는 프론트엔드 개발자를 희망하고 있는 공태윤입니다!'
+        '안녕하세요! 광운대학교 소프트웨어학부 22학번 공태윤입니다. 웹페이지에 방문하신 것을 환영합니다!'
     return (
         <Wrapper>
             <Image src={Memoji}></Image>
@@ -36,11 +36,10 @@ const SpeechBubble = styled.div`
     position: absolute;
     right: 4%;
     top: 12%;
-    word-wrap: pretty;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #000;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 2rem;
 `

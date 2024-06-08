@@ -1,18 +1,19 @@
 import { Routes, Route, Outlet, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Error from './pages/Error/Error'
-import VISIT from './pages/Visit/Visit'
+import Visit from './pages/Visit/Visit'
 import About from './pages/About/About'
 import Tech from './pages/Tech/Tech'
+import Visitors from './pages/Visitors/Visitors'
 
 export default function App() {
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
-                <Route index element={<VISIT />} />
+                <Route index element={<Visit />} />
                 <Route path="about" element={<About />} />
                 <Route path="tech" element={<Tech />} />
-                <Route path="visitors" element={<div>visitors</div>} />
+                <Route path="visitors" element={<Visitors />} />
                 <Route path="*" element={<Error />} />
             </Route>
         </Routes>
@@ -23,8 +24,7 @@ function Layout() {
     return (
         <div>
             <Hamburger>
-                <Logo>TY</Logo>
-                <StyledLink to="/">REGISTER</StyledLink>
+                <Logo to="/">TY</Logo>
                 <StyledLink to="/about">ABOUT</StyledLink>
                 <StyledLink to="/tech">TECH</StyledLink>
                 <StyledLink to="/visitors">VISITORS</StyledLink>
@@ -44,7 +44,7 @@ const Hamburger = styled.div`
     justify-content: start;
 `
 
-const Logo = styled.h1`
+const Logo = styled(Link)`
     font-size: 54px;
     font-weight: 900;
     padding-top: 15px;

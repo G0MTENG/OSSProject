@@ -1,15 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import ProfileImg from '../../assets/img/profile.png'
 import { FaPencilAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import axiosInstance from '../../api/axiosInstance.ts'
+import { useStore } from '../../store/store.ts'
 
 export default function Visit() {
-    const visitors: number = 10
+    const { visitors, setVisitors } = useStore()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [name, setName] = useState('')
     const [cheer, setCheer] = useState('')
     const navigate = useNavigate()
+
+    const getData = async () => {
+        axiosInstance.get('/').then((res: any) => {
+            setVisitors(res.data.visitors)
+        })
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     const handleClick = () => {
         if (name === '') {
@@ -44,7 +56,7 @@ export default function Visit() {
         }
     }
 
-    const submit = () => {
+    const submit = async () => {
         if (cheer === '') {
             alert('응원의 한 마디를 입력해주세요')
             return
@@ -54,6 +66,12 @@ export default function Visit() {
             `${name}님의 "${cheer}" 한 마디 감사합니다❤️❤️\n즐거운 하루 보내세요 ~!`
         )
 
+        axiosInstance.post('/', {
+            name,
+            cheer,
+        })
+        getData()
+
         navigate('/About')
     }
 
@@ -61,7 +79,7 @@ export default function Visit() {
         <FlexWrapper>
             <Wrapper>
                 <Img src={ProfileImg}></Img>
-                <Visiers>VISITORS : {visitors}</Visiers>
+                <Visiers>VISITORS : {visitors.length}</Visiers>
                 <InputWrapper>
                     <PenIcon></PenIcon>
                     <Input
